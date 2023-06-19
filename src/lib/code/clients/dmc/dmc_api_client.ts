@@ -10,7 +10,7 @@ class DmcApiClient {
     #postUrl = "/dmc/submit";
     #getUrl = "/dmc/get";
 
-    async getDmc() {
+    async getDmc(): Promise<Dmc[]> {
         var response = await fetch(`${this.#dmcApiUrl}${this.#getUrl}`, { mode: "cors" });
         return (await response.json()) as Promise<Dmc[]>;
     }
