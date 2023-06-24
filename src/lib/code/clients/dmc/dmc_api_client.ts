@@ -6,17 +6,17 @@ interface DmcPostRequest {
 }
 
 class DmcApiClient {
-    #dmcApiUrl = "https://dmcconvertapi.parkeradam.dev";
-    #postUrl = "/dmc/submit";
-    #getUrl = "/dmc/get";
+    dmcApiUrl = "https://dmcconvertapi.grab-a-byte.dev";
+    postUrl = "/dmc/submit";
+    getUrl = "/dmc/get";
 
     async getDmc(): Promise<Dmc[]> {
-        var response = await fetch(`${this.#dmcApiUrl}${this.#getUrl}`, { mode: "cors" });
+        var response = await fetch(`${this.dmcApiUrl}${this.getUrl}`, { mode: "cors" });
         return (await response.json()) as Promise<Dmc[]>;
     }
 
     async postDmc(body: DmcPostRequest): Promise<Dmc[]> {
-        var response = await fetch(`${this.#dmcApiUrl}${this.#postUrl}`, {
+        var response = await fetch(`${this.dmcApiUrl}${this.postUrl}`, {
             method: "POST",
             body: JSON.stringify(body)
         })
